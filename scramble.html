@@ -20,13 +20,13 @@
 
             // Grab the corresponding scrambled word from the SCRAMBLED array
             var scrambledWord = SCRAMBLED[index];
-            alert("The scrambled word is " + scrambledWord);
+
             // prompt the user to guess the original word when given the scrambled word
-            var guess = prompt("Guess the original word");
+            var guess = prompt(("The scrambled word is: " + scrambledWord),"Enter your guess here");
 
             // If the user guesses wrong, tell them they were wrong and the right word.
             if (guess !== randomWord) {
-                alert("You guessed incorrectly. The word is " + randomWord);
+                alert("You guessed incorrectly. The word is: " + randomWord);
             }
 
 
@@ -41,7 +41,7 @@
             // What does setting the playing variable do?
         }
 
-        alert("goodbye!");
+        alert("Goodbye!");
     </script>
     
 </body>
