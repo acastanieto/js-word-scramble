@@ -15,14 +15,25 @@
         while (playing) {
 
             // Grab a random word from the WORDS array
+            var index = Math.floor(Math.random() * (WORDS.length));
+            var randomWord = WORDS[index];
 
             // Grab the corresponding scrambled word from the SCRAMBLED array
-
+            var scrambledWord = SCRAMBLED[index];
+            alert("The scrambled word is " + scrambledWord);
             // prompt the user to guess the original word when given the scrambled word
+            var guess = prompt("Guess the original word");
 
             // If the user guesses wrong, tell them they were wrong and the right word.
-            
+            if (guess !== randomWord) {
+                alert("You guessed incorrectly. The word is " + randomWord);
+            }
+
+
             // If the user guesses the correct word, congratulate them.
+            else {
+                alert("Congrats! You guessed correctly!");
+            };
 
             playing = confirm("Press OK To keep playing or Cancel to quit");
 
