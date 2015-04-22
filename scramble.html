@@ -34,6 +34,7 @@
         // var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman"];
 
         var playing = true;
+        var notYetGuessed = true;
 
         while (playing) {
 
@@ -46,20 +47,26 @@
             console.log(scrambledWord)
 
             // prompt the user to guess the original word when given the scrambled word
-            var guess = ((prompt(("The scrambled word is: " + scrambledWord),"Enter your guess here")).toLowerCase()).trim();
+            
+            while (notYetGuessed) {
 
-            // If the user guesses wrong, tell them they were wrong and the right word.
-            if (guess !== randomWord) {
-                alert("You guessed incorrectly. The word is: " + randomWord);
+            // If the user guesses wrong, tell them they were wrong and prompt them for the answer again.
+            
+            var guess = ((prompt(("The scrambled word is: " + scrambledWord),"Enter your guess here")).toLowerCase()).trim();
+                if (guess === randomWord) {
+                    notYetGuessed = false;
+                } else {
+                    alert("Oops!  Wrong answer.  Try again.")
+
+                }
+
             }
 
-
-            // If the user guesses the correct word, congratulate them.
-            else {
-                alert("Congrats! You guessed correctly!");
-            };
-
-            playing = confirm("Press OK To keep playing or Cancel to quit");
+            playing = confirm("Congrats!  You guessed correctly.  Press OK To keep playing or Cancel to quit");
+            
+            if (playing) {
+                notYetGuessed = true;
+            }
 
             // What does confirm() return?
             // What does setting the playing variable do?
