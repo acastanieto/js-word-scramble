@@ -22,7 +22,7 @@
             var scrambledWord = SCRAMBLED[index];
 
             // prompt the user to guess the original word when given the scrambled word
-            var guess = prompt(("The scrambled word is: " + scrambledWord),"Enter your guess here");
+            var guess = ((prompt(("The scrambled word is: " + scrambledWord),"Enter your guess here")).toLowerCase()).trim();
 
             // If the user guesses wrong, tell them they were wrong and the right word.
             if (guess !== randomWord) {
