@@ -7,8 +7,31 @@
     <h1>A Javascript Word Scramble Game</h1>
 
     <script>
+
+        function shuffle(string) {
+            // uses Fisher-Yates shuffle algorithm http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+            var array = string.split("");
+            var currentIndex = array.length
+            while (currentIndex != 0) {
+                // pick a random number between 0 and the current index
+                var randomIndex = Math.floor(Math.random() * currentIndex);
+                // then set currentIndex to 1 index less (we're moving backward through the array)
+                currentIndex -= 1;
+                // then swap the number at the (now incremented down by 1) currentIndex with the number at the randomIndex
+                // first we need to store the number at the currentIndex in a temporary variable
+                var tempVariable = array[currentIndex];
+                // then we replace the number at (now incremented down by 1) currentIndex with the number at randomIndex
+                array[currentIndex] = array[randomIndex];
+                // then we replace the number at randomIndex with the number stored in the tempVariable
+                array[randomIndex] = tempVariable;
+
+
+            }
+            return array.join("");
+        }
+
         var WORDS     = ["booger", "apple", "hackbright", "mango"];
-        var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman"];
+        // var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman"];
 
         var playing = true;
 
@@ -19,7 +42,8 @@
             var randomWord = WORDS[index];
 
             // Grab the corresponding scrambled word from the SCRAMBLED array
-            var scrambledWord = SCRAMBLED[index];
+            var scrambledWord = shuffle(randomWord);
+            console.log(scrambledWord)
 
             // prompt the user to guess the original word when given the scrambled word
             var guess = ((prompt(("The scrambled word is: " + scrambledWord),"Enter your guess here")).toLowerCase()).trim();
